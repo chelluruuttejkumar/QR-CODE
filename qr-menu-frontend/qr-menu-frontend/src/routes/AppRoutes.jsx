@@ -10,31 +10,26 @@ function AppRoutes() {
     <BrowserRouter>
       <Routes>
 
-        {/* Default Route */}
         <Route
           path="/"
           element={<Navigate to="/menu/1" replace />}
         />
 
-        {/* Menu Page */}
         <Route
           path="/menu/:menuId"
           element={<MenuPage />}
         />
 
-        {/* Cart */}
         <Route
           path="/cart"
           element={<CartPage />}
         />
 
-        {/* Checkout */}
         <Route
           path="/checkout"
           element={<CheckoutPage />}
         />
 
-        {/* Success */}
         <Route
           path="/success"
           element={<OrderSuccess />}

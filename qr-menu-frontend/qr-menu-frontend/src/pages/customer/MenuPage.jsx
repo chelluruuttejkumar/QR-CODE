@@ -24,17 +24,23 @@ function MenuPage() {
   }, [menuId]);
 
   const loadRestaurant = async () => {
-    try {
-      const response = await getRestaurantMenu(menuId);
+  try {
+    console.log("Loading Restaurant:", menuId);
 
-      setRestaurant(response.restaurant);
-      setMenu(response.menu);
-    } catch (error) {
-      console.error("Error loading restaurant:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    const response = await getRestaurantMenu(menuId);
+
+    console.log(response);
+
+    setRestaurant(response.restaurant);
+    setMenu(response.menu);
+
+  } catch (error) {
+    console.error("Error loading restaurant:", error);
+
+  } finally {
+    setLoading(false);
+  }
+};
 
   const filteredMenu = useMemo(() => {
     return menu
