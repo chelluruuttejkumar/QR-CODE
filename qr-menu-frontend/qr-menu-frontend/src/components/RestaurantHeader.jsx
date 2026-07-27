@@ -2,8 +2,8 @@ import "../styles/restaurantHeader.css";
 
 function RestaurantHeader({ restaurant }) {
   const logoUrl = restaurant?.logo
-    ? `http://localhost:5000/uploads/${restaurant.logo}`
-    : "/restaurant-logo.png";
+  ? `${import.meta.env.VITE_API_URL.replace("/api", "")}/uploads/${restaurant.logo}`
+  : "/restaurant-logo.png";
 
   return (
     <div className="restaurant-header">

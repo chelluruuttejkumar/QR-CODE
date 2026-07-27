@@ -38,8 +38,8 @@ function CartPage() {
         <>
           {cartItems.map((item) => {
             const imageUrl = item.image
-              ? `http://localhost:5000/uploads/food/${item.image}`
-              : "https://via.placeholder.com/120x100?text=Food";
+  ? `${import.meta.env.VITE_API_URL.replace("/api", "")}/uploads/food/${item.image}`
+  : "https://via.placeholder.com/120x100?text=Food";
 
             return (
               <div

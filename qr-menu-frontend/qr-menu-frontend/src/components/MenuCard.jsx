@@ -6,9 +6,9 @@ function MenuCard({ item }) {
 
   const { addToCart } = useCart();
 
-  const imageUrl = item.image
-    ? `http://localhost:5000/uploads/food/${item.image}`
-    : "https://via.placeholder.com/180x150?text=Food";
+ const imageUrl = item.image
+  ? `${import.meta.env.VITE_API_URL.replace("/api", "")}/uploads/food/${item.image}`
+  : "https://via.placeholder.com/180x150?text=Food";
 
   return (
     <div className="menu-card">

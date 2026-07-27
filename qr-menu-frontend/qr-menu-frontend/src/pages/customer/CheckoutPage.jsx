@@ -36,8 +36,9 @@ const menuId = location.state?.menuId;
 <div className="checkout-header">
 
   <img
-    src="http://localhost:5000/uploads/logo.png"
-    alt="Chelluru Enterprise"
+  src={`${import.meta.env.VITE_API_URL.replace("/api", "")}/uploads/logo/logo.png`}
+  alt="Chelluru Enterprise"
+
     className="checkout-logo"
   />
 
