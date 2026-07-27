@@ -1,34 +1,28 @@
-import "../styles/restaurantHeader.css";
+import React from "react";
+import "../styles/RestaurantHeader.css";
 
 function RestaurantHeader({ restaurant }) {
-  // Remove "/api" to get the backend base URL
-  const BASE_URL = import.meta.env.VITE_API_URL.replace("/api", "");
+  const API_URL = import.meta.env.VITE_API_URL;
 
-  // Restaurant logo URL
-  const logoUrl = `${BASE_URL}/uploads/logo/logo.png`;
+  const logoUrl = restaurant?.logo
+    ? `${API_URL}/uploads/logo/${restaurant.logo}`
+    : "/restaurant-logo.png";
 
   return (
     <div className="restaurant-header">
-
-      <div className="restaurant-logo-container">
+      <div className="restaurant-left">
         <img
           src={logoUrl}
           alt="Restaurant Logo"
           className="restaurant-logo"
           onError={(e) => {
-            console.log("Logo not found:", logoUrl);
-
-            e.target.src =
-              "https://via.placeholder.com/120x120?text=Restaurant+Logo";
+            e.target.src = "/restaurant-logo.png";
           }}
         />
       </div>
 
-      <div className="restaurant-details">
-
-        <h1 className="restaurant-name">
-          {restaurant?.restaurant_name}
-        </h1>
+      <div className="restaurant-right">
+        <h1>{restaurant?.restaurant_name}</h1>
 
         <p className="restaurant-address">
           📍 {restaurant?.address}
@@ -37,9 +31,7 @@ function RestaurantHeader({ restaurant }) {
         <p className="restaurant-phone">
           📞 {restaurant?.phone}
         </p>
-
       </div>
-
     </div>
   );
 }
