@@ -11,8 +11,11 @@ function HomePage() {
 
       <div className="home-card">
 
-        const logoUrl =
-  `${import.meta.env.VITE_API_URL.replace("/api", "")}/uploads/logo/logo.png`;
+        <img
+          src="/restaurant-logo.png"
+          alt="Restaurant Logo"
+          className="restaurant-logo"
+        />
 
         <h1>Chelluru Enterprise</h1>
 
