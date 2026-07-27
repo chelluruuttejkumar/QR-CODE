@@ -5,6 +5,7 @@ import RestaurantHeader from "../../components/RestaurantHeader";
 import CategorySection from "../../components/CategorySection";
 import SearchBar from "../../components/SearchBar";
 import FloatingCart from "../../components/FloatingCart";
+import MenuQRCode from "../../components/MenuQRCode";
 
 import { getRestaurantMenu } from "../../services/restaurantService";
 
@@ -24,23 +25,17 @@ function MenuPage() {
   }, [menuId]);
 
   const loadRestaurant = async () => {
-  try {
-    console.log("Loading Restaurant:", menuId);
+    try {
+      const response = await getRestaurantMenu(menuId);
 
-    const response = await getRestaurantMenu(menuId);
-
-    console.log(response);
-
-    setRestaurant(response.restaurant);
-    setMenu(response.menu);
-
-  } catch (error) {
-    console.error("Error loading restaurant:", error);
-
-  } finally {
-    setLoading(false);
-  }
-};
+      setRestaurant(response.restaurant);
+      setMenu(response.menu);
+    } catch (error) {
+      console.error("Error loading restaurant:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const filteredMenu = useMemo(() => {
     return menu
@@ -78,6 +73,10 @@ function MenuPage() {
         restaurant={restaurant}
       />
 
+      <MenuQRCode
+        menuId={menuId}
+      />
+
       <SearchBar
         search={search}
         setSearch={setSearch}
@@ -94,12 +93,10 @@ function MenuPage() {
         <h3>No food items found.</h3>
       )}
 
-      <FloatingCart
-        restaurant={restaurant}
-      />
+      <FloatingCart />
 
     </div>
   );
 }
 
-export default MenuPage;    
+export default MenuPage;
