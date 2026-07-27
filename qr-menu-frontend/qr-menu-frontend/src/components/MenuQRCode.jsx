@@ -1,39 +1,36 @@
-import React from "react";
-import "./MenuQRCode.css";
+import QRCode from "react-qr-code";
 
-function MenuQRCode({ restaurant }) {
-  const API_URL = import.meta.env.VITE_API_URL;
-
-  const qrUrl = `${API_URL}/uploads/qrcodes/${restaurant.id}.png`;
-
-  const logoUrl = restaurant?.logo
-    ? `${API_URL}/uploads/logo/${restaurant.logo}`
-    : "/restaurant-logo.png";
+function MenuQRCode({ menuId }) {
+  const menuUrl = `https://qr-code-qtdcdz0kj-chelluruuttejkumars-projects.vercel.app/menu/${menuId}`;
 
   return (
-    <div className="menu-qr-container">
-      <div className="menu-qr-card">
+    <div
+      style={{
+        textAlign: "center",
+        background: "#fff",
+        padding: "20px",
+        borderRadius: "12px",
+        margin: "20px auto",
+        width: "fit-content",
+        boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+      }}
+    >
+      <h2>📱 Scan to View Menu</h2>
 
-        <img
-          src={logoUrl}
-          alt="Restaurant Logo"
-          className="restaurant-logo"
-          onError={(e) => {
-            e.target.src = "/restaurant-logo.png";
-          }}
-        />
+      <QRCode
+        value={menuUrl}
+        size={220}
+      />
 
-        <h1>{restaurant.restaurant_name}</h1>
-
-        <h2>Scan QR Code To View Menu</h2>
-
-        <img
-          src={qrUrl}
-          alt="Restaurant QR"
-          className="qr-image"
-        />
-
-      </div>
+      <p
+        style={{
+          marginTop: "15px",
+          color: "#555",
+          fontSize: "14px",
+        }}
+      >
+        Scan this QR code to open the menu
+      </p>
     </div>
   );
 }
