@@ -1,36 +1,43 @@
 import QRCode from "react-qr-code";
+import "../styles/home.css";
 
 function MenuQRCode({ menuId }) {
-  const menuUrl = `https://qr-code-qtdcdz0kj-chelluruuttejkumars-projects.vercel.app/menu/${menuId}`;
+  const menuUrl = `https://chelluruuttejkumarqr.vercel.app/menu/${menuId}`;
 
   return (
-    <div
-      style={{
-        textAlign: "center",
-        background: "#fff",
-        padding: "20px",
-        borderRadius: "12px",
-        margin: "20px auto",
-        width: "fit-content",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
-      }}
-    >
-      <h2>📱 Scan to View Menu</h2>
+    <div className="home-container">
+      <div className="home-card">
 
-      <QRCode
-        value={menuUrl}
-        size={220}
-      />
+        {/* Restaurant Logo */}
+        <img
+          src="/restaurant-logo.png"
+          alt="Restaurant Logo"
+          className="restaurant-logo"
+        />
 
-      <p
-        style={{
-          marginTop: "15px",
-          color: "#555",
-          fontSize: "14px",
-        }}
-      >
-        Scan this QR code to open the menu
-      </p>
+        {/* Restaurant Name */}
+        <h1>Chelluru Enterprise</h1>
+
+        {/* Heading */}
+        <h3>Scan QR Code To View Menu</h3>
+
+        {/* QR Code */}
+        <QRCode
+          value={menuUrl}
+          size={250}
+        />
+
+        <p
+          style={{
+            marginTop: "20px",
+            color: "#666",
+            fontSize: "15px",
+          }}
+        >
+          Scan this QR code using your mobile camera to view the restaurant menu.
+        </p>
+
+      </div>
     </div>
   );
 }
