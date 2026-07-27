@@ -2,8 +2,8 @@ import "../styles/restaurantHeader.css";
 
 function RestaurantHeader({ restaurant }) {
   const logoUrl = restaurant?.logo
-  ? `${import.meta.env.VITE_API_URL.replace("/api", "")}/uploads/${restaurant.logo}`
-  : "/restaurant-logo.png";
+  ? `${import.meta.env.VITE_API_URL.replace("/api", "")}/uploads/logo/${restaurant.logo}`
+  : "https://via.placeholder.com/120x120?text=Logo";
 
   return (
     <div className="restaurant-header">
