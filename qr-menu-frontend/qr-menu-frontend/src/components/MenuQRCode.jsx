@@ -1,20 +1,26 @@
 import QRCode from "react-qr-code";
-import "../styles/home.css";
+import "./MenuQRCode.css";
 
 function MenuQRCode({ menuId }) {
   const menuUrl = `https://chelluruuttejkumarqr.vercel.app/menu/${menuId}`;
 
   return (
-    <div className="home-container">
-      <div className="home-card">
+    <div className="menu-qr-container">
+      <div className="menu-qr-card">
 
-        <h1>Chelluru Enterprise</h1>
+        <h1 className="restaurant-name">
+          Chelluru Enterprise
+        </h1>
 
-        <h3>Scan QR Code To View Menu</h3>
+        <h2 className="qr-title">
+          Scan QR Code To View Menu
+        </h2>
 
         <QRCode
           value={menuUrl}
-          size={250}
+          size={260}
+          bgColor="#ffffff"
+          fgColor="#000000"
         />
 
         <p
@@ -24,7 +30,7 @@ function MenuQRCode({ menuId }) {
             fontSize: "15px",
           }}
         >
-          Scan this QR code using your mobile camera to view the restaurant menu.
+          Scan this QR code with your mobile camera to view the menu.
         </p>
 
       </div>

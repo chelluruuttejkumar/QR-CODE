@@ -2,7 +2,6 @@ import QRCode from "react-qr-code";
 import "../styles/home.css";
 
 function HomePage() {
-
   const menuUrl =
     "https://chelluruuttejkumarqr.vercel.app/menu/1";
 

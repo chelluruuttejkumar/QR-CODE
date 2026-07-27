@@ -1,10 +1,8 @@
 import "../styles/restaurantHeader.css";
 
-function RestaurantHeader({ restaurant }) {
-  // Remove "/api" to get the backend base URL
+function RestaurantHeader() {
   const BASE_URL = import.meta.env.VITE_API_URL.replace("/api", "");
 
-  // Restaurant logo URL
   const logoUrl = `${BASE_URL}/uploads/logo/logo.png`;
 
   return (
@@ -16,28 +14,23 @@ function RestaurantHeader({ restaurant }) {
           alt="Restaurant Logo"
           className="restaurant-logo"
           onError={(e) => {
-            console.log("Logo not found:", logoUrl);
-
-            e.target.src =
-              "https://via.placeholder.com/120x120?text=Restaurant+Logo";
+            e.target.src = "/restaurant-logo.png";
           }}
         />
       </div>
 
       <div className="restaurant-details">
-
         <h1 className="restaurant-name">
-          {restaurant?.restaurant_name}
+          Chelluru Enterprise
         </h1>
 
         <p className="restaurant-address">
-          📍 {restaurant?.address}
+          📍 Hyderabad
         </p>
 
         <p className="restaurant-phone">
-          📞 {restaurant?.phone}
+          📞 +91 8142731739
         </p>
-
       </div>
 
     </div>
