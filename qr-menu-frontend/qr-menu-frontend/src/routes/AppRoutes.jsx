@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomePage from "../pages/HomePage";
-
 import MenuPage from "../pages/customer/MenuPage";
 import CartPage from "../pages/customer/CartPage";
 import CheckoutPage from "../pages/customer/CheckoutPage";
@@ -10,38 +9,19 @@ import OrderSuccess from "../pages/customer/OrderSuccess";
 function AppRoutes() {
   return (
     <BrowserRouter>
-
       <Routes>
 
-        {/* Landing Page */}
-        <Route
-          path="/"
-          element={<HomePage />}
-        />
+        <Route path="/" element={<HomePage />} />
 
-        {/* Customer Menu */}
-        <Route
-          path="/menu/:menuId"
-          element={<MenuPage />}
-        />
+        <Route path="/menu/:menuId" element={<MenuPage />} />
 
-        <Route
-          path="/cart"
-          element={<CartPage />}
-        />
+        <Route path="/cart" element={<CartPage />} />
 
-        <Route
-          path="/checkout"
-          element={<CheckoutPage />}
-        />
+        <Route path="/checkout" element={<CheckoutPage />} />
 
-        <Route
-          path="/success"
-          element={<OrderSuccess />}
-        />
+        <Route path="/success" element={<OrderSuccess />} />
 
       </Routes>
-
     </BrowserRouter>
   );
 }

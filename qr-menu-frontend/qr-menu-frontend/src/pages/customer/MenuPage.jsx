@@ -16,7 +16,6 @@ function MenuPage() {
   const [restaurant, setRestaurant] = useState(null);
   const [menu, setMenu] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -25,12 +24,16 @@ function MenuPage() {
 
   const loadRestaurant = async () => {
     try {
+      console.log("Loading Restaurant:", menuId);
+
       const response = await getRestaurantMenu(menuId);
 
+      console.log("API Response:", response);
+
       setRestaurant(response.restaurant);
-      setMenu(response.menu);
+      setMenu(response.menu || []);
     } catch (error) {
-      console.error(error);
+      console.error("Error loading restaurant:", error);
     } finally {
       setLoading(false);
     }
@@ -46,13 +49,13 @@ function MenuPage() {
             .includes(search.toLowerCase())
         ),
       }))
-      .filter((category) => category.items.length);
+      .filter((category) => category.items.length > 0);
   }, [menu, search]);
 
   if (loading) {
     return (
       <div className="menu-container">
-        <h2>Loading Restaurant...</h2>
+        <h2>Loading Restaurant Menu...</h2>
       </div>
     );
   }
@@ -61,6 +64,7 @@ function MenuPage() {
     return (
       <div className="menu-container">
         <h2>Restaurant Not Found</h2>
+        <p>Please check the Menu ID or Backend API.</p>
       </div>
     );
   }
@@ -68,19 +72,27 @@ function MenuPage() {
   return (
     <div className="menu-container">
 
-      <RestaurantHeader restaurant={restaurant} />
+      <RestaurantHeader
+        restaurant={restaurant}
+      />
 
       <SearchBar
         search={search}
         setSearch={setSearch}
       />
 
-      {filteredMenu.map((category) => (
-        <CategorySection
-          key={category.id}
-          category={category}
-        />
-      ))}
+      {filteredMenu.length > 0 ? (
+        filteredMenu.map((category) => (
+          <CategorySection
+            key={category.id}
+            category={category}
+          />
+        ))
+      ) : (
+        <div style={{ textAlign: "center", marginTop: "30px" }}>
+          <h3>No Food Items Found</h3>
+        </div>
+      )}
 
       <FloatingCart
         restaurant={restaurant}

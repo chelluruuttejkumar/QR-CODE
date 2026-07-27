@@ -1,13 +1,12 @@
 import QRCode from "react-qr-code";
-import "./../styles/home.css";
+import "../styles/home.css";
 
 function HomePage() {
 
   const menuUrl =
-    "https://qr-code-dusky-theta.vercel.app/menu/1";
+    "https://chelluruuttejkumarqr.vercel.app/menu/1";
 
   return (
-
     <div className="home-container">
 
       <div className="home-card">
@@ -20,9 +19,7 @@ function HomePage() {
 
         <h1>Chelluru Enterprise</h1>
 
-        <p>
-          Scan QR Code to View Menu
-        </p>
+        <h3>Scan QR Code To View Menu</h3>
 
         <QRCode
           value={menuUrl}
@@ -32,7 +29,6 @@ function HomePage() {
       </div>
 
     </div>
-
   );
 }
 
