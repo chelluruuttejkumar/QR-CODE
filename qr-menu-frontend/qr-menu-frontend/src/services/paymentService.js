@@ -1,7 +1,10 @@
 import axios from "axios";
 
 const API =
-  import.meta.env.VITE_API_URL || "https://YOUR-RENDER-URL.onrender.com/api";
+  import.meta.env.VITE_API_URL ||
+  "https://qr-code-02fo.onrender.com/api";
+
+console.log("Payment API:", API);
 
 // Create Razorpay Order
 export const createPaymentOrder = async (amount) => {
