@@ -8,20 +8,10 @@ function MenuQRCode({ menuId }) {
     <div className="home-container">
       <div className="home-card">
 
-        {/* Restaurant Logo */}
-        <img
-          src="/restaurant-logo.png"
-          alt="Restaurant Logo"
-          className="restaurant-logo"
-        />
-
-        {/* Restaurant Name */}
         <h1>Chelluru Enterprise</h1>
 
-        {/* Heading */}
         <h3>Scan QR Code To View Menu</h3>
 
-        {/* QR Code */}
         <QRCode
           value={menuUrl}
           size={250}
