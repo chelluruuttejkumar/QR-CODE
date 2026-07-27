@@ -5,7 +5,6 @@ import RestaurantHeader from "../../components/RestaurantHeader";
 import CategorySection from "../../components/CategorySection";
 import SearchBar from "../../components/SearchBar";
 import FloatingCart from "../../components/FloatingCart";
-import MenuQRCode from "../../components/MenuQRCode";
 
 import { getRestaurantMenu } from "../../services/restaurantService";
 
@@ -31,7 +30,7 @@ function MenuPage() {
       setRestaurant(response.restaurant);
       setMenu(response.menu);
     } catch (error) {
-      console.error("Error loading restaurant:", error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -47,13 +46,13 @@ function MenuPage() {
             .includes(search.toLowerCase())
         ),
       }))
-      .filter((category) => category.items.length > 0);
+      .filter((category) => category.items.length);
   }, [menu, search]);
 
   if (loading) {
     return (
       <div className="menu-container">
-        <h2>Loading Restaurant Menu...</h2>
+        <h2>Loading Restaurant...</h2>
       </div>
     );
   }
@@ -69,31 +68,23 @@ function MenuPage() {
   return (
     <div className="menu-container">
 
-      <RestaurantHeader
-        restaurant={restaurant}
-      />
-
-      <MenuQRCode
-        menuId={menuId}
-      />
+      <RestaurantHeader restaurant={restaurant} />
 
       <SearchBar
         search={search}
         setSearch={setSearch}
       />
 
-      {filteredMenu.length > 0 ? (
-        filteredMenu.map((category) => (
-          <CategorySection
-            key={category.id}
-            category={category}
-          />
-        ))
-      ) : (
-        <h3>No food items found.</h3>
-      )}
+      {filteredMenu.map((category) => (
+        <CategorySection
+          key={category.id}
+          category={category}
+        />
+      ))}
 
-      <FloatingCart />
+      <FloatingCart
+        restaurant={restaurant}
+      />
 
     </div>
   );

@@ -1,4 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import HomePage from "../pages/HomePage";
 
 import MenuPage from "../pages/customer/MenuPage";
 import CartPage from "../pages/customer/CartPage";
@@ -8,13 +10,16 @@ import OrderSuccess from "../pages/customer/OrderSuccess";
 function AppRoutes() {
   return (
     <BrowserRouter>
+
       <Routes>
 
+        {/* Landing Page */}
         <Route
           path="/"
-          element={<Navigate to="/menu/1" replace />}
+          element={<HomePage />}
         />
 
+        {/* Customer Menu */}
         <Route
           path="/menu/:menuId"
           element={<MenuPage />}
@@ -36,6 +41,7 @@ function AppRoutes() {
         />
 
       </Routes>
+
     </BrowserRouter>
   );
 }
