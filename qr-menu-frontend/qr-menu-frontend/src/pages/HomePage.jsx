@@ -10,12 +10,6 @@ function HomePage() {
 
       <div className="home-card">
 
-        <img
-          src="/restaurant-logo.png"
-          alt="Restaurant Logo"
-          className="restaurant-logo"
-        />
-
         <h1>Chelluru Enterprise</h1>
 
         <h3>Scan QR Code To View Menu</h3>
