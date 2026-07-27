@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api";
+const API = import.meta.env.VITE_API_URL;
 
 export const getRestaurantMenu = async (restaurantId) => {
   const response = await axios.get(
-    `${API}/restaurants/${restaurantId}/menu`
+    `${API}/api/restaurants/${restaurantId}/menu`
   );
 
   return response.data;
