@@ -7,6 +7,9 @@ const paymentRoutes = require("./routes/paymentRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const adminOrderRoutes = require("./routes/adminOrderRoutes");
 
+const adminRoutes = require("./routes/adminRoutes");
+
+
 
 require("dotenv").config();
 
@@ -43,6 +46,7 @@ app.use("/api", restaurantRoutes);
 
 app.use("/api", orderRoutes);
 app.use("/api", adminOrderRoutes);
+app.use("/api", adminRoutes);
 app.listen(5000,()=>{
     console.log("Server running on port 5000");
 });
