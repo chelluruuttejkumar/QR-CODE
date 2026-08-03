@@ -1,0 +1,53 @@
+.admin-orders{
+    width:90%;
+    margin:auto;
+    padding:30px;
+}
+
+.admin-orders h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.order-card{
+    background:#fff;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.1);
+}
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.status{
+    padding:8px 18px;
+    border-radius:20px;
+    color:#fff;
+    font-weight:bold;
+}
+
+.pending{
+    background:#ff9800;
+}
+
+.preparing{
+    background:#1976d2;
+}
+
+.ready{
+    background:#2e7d32;
+}
+
+.delivered{
+    background:#4caf50;
+}
+
+select{
+    margin-top:20px;
+    width:220px;
+    padding:10px;
+}
